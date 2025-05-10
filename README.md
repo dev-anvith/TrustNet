@@ -133,4 +133,12 @@ document.getElementById("signupButton").addEventListener("click", function () {
 * Tracks **page views** and **signups** using `client_id`
 * Displays widgets dynamically with **real-time updates**
 
+---
+
+## Working Screenshots
+
+![App Screenshot](assets/s1.png)
+![App Screenshot](assets/s2.png)
+
+
 
