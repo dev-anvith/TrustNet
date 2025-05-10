@@ -33,12 +33,8 @@ module.exports.registerUser = async function (req, res) {
                         password: hash,
                         clientId
                     });
-                    let token = jwt.sign({ email, id: client._id }, process.env.JWT_KEY);
-
-
-                    res.cookie("token", token);
-
-                    res.send("user created successfully");
+                    req.flash("message", "Account Created, Please Login")
+                    res.redirect('/login');
 
                 }
 
@@ -61,8 +57,8 @@ module.exports.loginUser = async function(req, res){
             if(result){
                 let token = jwt.sign({ email, id: user._id }, process.env.JWT_KEY);
                 res.cookie("token", token);
-                res.send("Logged in")
-                // res.redirect('/shop');
+                //res.send("Logged in")
+                res.redirect('/client/user-dash');
             }else{
                 return res.send("Email or Password incorrect");
             }
@@ -72,4 +68,10 @@ module.exports.loginUser = async function(req, res){
         res.send(err.message);
     }
 
+};
+
+module.exports.logout = function(req, res){
+    res.clearCookie("token");
+    req.flash('message', "You have been logged out");
+    res.redirect('/login');
 };

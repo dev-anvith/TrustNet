@@ -21,11 +21,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
+
+const expressSession = require("express-session");
+
+const flash = require("connect-flash");
+
+app.use(
+  expressSession({
+      resave: false,
+      saveUninitialized: false,
+      secret: process.env.JWT_KEY,
+  })
+);
+
+app.use(flash());
+
 app.use('/client', clientRouter);
 app.use('/event', eventRouter);
 app.use('/', index);
-
-
 app.get('/sdk.js', (req, res) => {
     res.type('text/javascript');
     res.sendFile(path.join(__dirname, 'public', 'sdk.js'));

@@ -1,0 +1,82 @@
+<%- include('partials/header') %>
+<% if(message.length>0){ %>
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <span class="inline-block mt-1 mb-1 text-white">
+            <%= message %>
+        </span>
+    </div>
+    <% } %>
+    <div class="max-w-6xl mx-auto px-4 py-8 text-white">
+        <!-- User Profile Section -->
+        <div class="flex items-center space-x-4 mb-8 border border-gray-700 rounded-lg p-4 bg-gray-800">
+            <img 
+            src="<%= user.profilePicture ? 'data:image/jpeg;base64,' + user.profilePicture.toString('base64') : 'https://placehold.co/600x400' %>" 
+            alt="Product Image" 
+            class="w-32 h-32 rounded-full object-cover border border-gray-600"
+          />
+           
+            <div>
+                <h2 class="text-2xl font-semibold">
+                    <%= user.name %>
+                </h2>
+                <p class="text-gray-400">
+                    <%= user.email %>
+                </p>
+            </div>
+            
+
+        </div>
+        <div>
+            <h2 class="text-2xl font-medium">Here is your script to inject TrustNet into your Website!!</h2>
+            <div class="ml-auto text-right mb-10">
+                <% if (user.script) { %>
+                    <div class="mt-4 border border-gray-600 rounded p-4 bg-gray-900 text-gray-200 text-left">
+                      <div id="scriptText" class="text-sm break-words"><%= user.script %></div>
+                      <button onclick="copyScript()" class="mt-3 bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-white text-sm">Copy Script</button>
+                    </div>
+                  <% } else { %>
+                    <p class="text-yellow-400 mt-4 text-left">You haven't generated your widget script yet. Go to "Configure Widget" to generate one.</p>
+                  <% } %>
+                  
+                  
+                  
+            </div>
+        </div>
+        
+
+        <h1 class="text-3xl font-semibold mb-6 border-b border-gray-700 pb-2">Dashboard</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <!-- Settings Card -->
+            <a href="/client/edit-profile"
+                class="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:bg-gray-700 transition duration-200">
+                <h2 class="text-xl font-medium mb-2">Settings</h2>
+                <p class="text-sm text-gray-400">Update your profile, credentials, and preferences.</p>
+            </a>
+
+            <!-- Configure Widget Card -->
+            <a href="/client/widget"
+                class="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:bg-gray-700 transition duration-200">
+                <h2 class="text-xl font-medium mb-2">Configure Widget</h2>
+                <p class="text-sm text-gray-400">Customize and generate your script snippet.</p>
+            </a>
+
+            <!-- Analytics Card -->
+            <a href="/client/analytics"
+                class="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:bg-gray-700 transition duration-200">
+                <h2 class="text-xl font-medium mb-2">Analytics</h2>
+                <p class="text-sm text-gray-400">Track viewer and signup activity over time.</p>
+            </a>
+        </div>
+    </div>
+    <script>
+        function copyScript() {
+          const scriptText = document.getElementById('scriptText').innerText;
+          navigator.clipboard.writeText(scriptText)
+            .then(() => alert("Script copied!"))
+            .catch(() => alert("Failed to copy script."));
+        }
+      </script>
+      
+      
+    <%- include('partials/footer') %>

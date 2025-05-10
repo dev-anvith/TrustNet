@@ -10,7 +10,10 @@ const clientSchema = new mongoose.Schema({
     widgetPosition: { type: String, default: "bottom-right" }, 
     widgetColor: { type: String, default: "#4CAF50" }          
   },
-  password: {type: String}
+  password: {type: String},
+  customMessage: {type: String},
+  script: {type:String},
+  profilePicture: {type: Buffer}
 });
 
 module.exports = mongoose.model("clients", clientSchema);

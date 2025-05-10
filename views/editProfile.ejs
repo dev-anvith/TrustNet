@@ -1,0 +1,38 @@
+<%- include('partials/header', { title: "Edit Profile", heading: "Edit Your Profile" }) %>
+
+<div class="max-w-3xl mx-auto px-4 py-8 text-white">
+  <form action="/client/edit" method="POST" enctype="multipart/form-data" class="space-y-6">
+
+   <!-- Profile Image Upload -->
+<div class="flex items-center space-x-6 mb-6">
+  <img src="<%= user.profilePicture ? 'data:image/jpeg;base64,' + user.profilePicture.toString('base64') : 'https://placehold.co/100x100' %>" 
+       alt="Current Profile Picture"
+       class="w-24 h-24 rounded-full object-cover border border-gray-600">
+  
+  <div>
+    <label class="block mb-2 font-semibold">Change Profile Picture</label>
+    <input 
+      name="profilePicture" 
+      accept="image/*" 
+      type="file"
+      class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0
+             file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+  </div>
+</div>
+
+
+    <!-- Email Input -->
+    <div>
+      <label for="email" class="block mb-1 font-semibold">Email</label>
+      <input type="email" name="email" id="email" value="<%= user.email %>" required
+        class="w-full bg-gray-900 border border-gray-600 text-gray-200 rounded px-4 py-2">
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold">
+      Save Changes
+    </button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

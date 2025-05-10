@@ -1,0 +1,63 @@
+<%- include('partials/header', { title: "Configure Widget", heading: "Script Configuration" }) %>
+
+
+<main class="px-8 py-10 text-gray-200 bg-gray-900 min-h-screen">
+  <section class="max-w-4xl mx-auto space-y-10">
+    <h2 class="text-3xl font-bold">Widget Customization</h2>
+    <p class="text-gray-400">Customize how you want your widget to look</p>
+
+    <form action="/client/widget" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Service Type -->
+      <div class="flex flex-col">
+        <label class="mb-1 font-semibold" for="type">Service Type</label>
+        <select id="type" name="type" class="bg-gray-800 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="signup">Signup Count</option>
+          <option value="live">Live Viewers</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+
+      <!-- Custom Message -->
+      <div class="flex flex-col">
+        <label class="mb-1 font-semibold" for="message">Custom Message</label>
+        <input type="text" id="message" name="message" placeholder="e.g., People love our product!"
+          class="bg-gray-800 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Widget Position -->
+      <div class="flex flex-col">
+        <label class="mb-1 font-semibold" for="position">Widget Position</label>
+        <select id="position" name="position" class="bg-gray-800 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="top-left">Top Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="bottom-right">Bottom Right</option>
+        </select>
+      </div>
+
+      <!-- Widget Color -->
+      <div class="flex flex-col">
+        <label class="mb-1 font-semibold" for="color">Widget Color</label>
+        <input type="color" id="color" name="color" class="h-10 w-24 bg-gray-800 border border-gray-700 rounded">
+      </div>
+      <div class="flex flex-col">
+        <label class="mb-1 font-semibold" for="position">Auto Disappear Widget</label>
+        <select id="dismiss" name="dismiss" class="bg-gray-800 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+          
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="md:col-span-2">
+        <button type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition w-full md:w-auto">
+          Save  
+        </button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

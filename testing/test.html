@@ -2,6 +2,16 @@
 <html>
 <head>
   <title>SDK Test</title>
+  <!-- Corrected script tag with proper data attributes -->
+  <script 
+    src="http://localhost:3000/sdk.js" 
+    data-client-id="zoro-ttR5tSSYV" 
+    data-message="" 
+    data-type="live" 
+    data-position="top-left" 
+    data-color="#000000" 
+    data-auto-dismiss="true">
+  </script>
 </head>
 <body>
   <h1>Testing Live Viewer Count</h1>
@@ -11,19 +21,14 @@
   <!-- Signup Button -->
   <button id="signupButton">Sign Up</button>
 
-  <!-- Embed your SDK -->
-  <script src="http://localhost:3000/sdk.js" data-client-id="luffy-lROxvj56y"></script>
-
+  <!-- Embed your SDK tracking logic -->
   <script>
-    // Listen for the signup button click event
     document.getElementById("signupButton").addEventListener("click", function () {
-      // Create an object with any additional metadata you want to track
       const signupMetadata = {
-        source: "website",  // For example, tracking the signup source
-        campaign: "summer_sale"  // You can add campaign or other info
+        source: "website",
+        campaign: "summer_sale"
       };
 
-      // Call the trackSignup function (from the SDK) to track the signup event
       if (window.Proof && window.Proof.trackSignup) {
         window.Proof.trackSignup(signupMetadata);
         alert("Signup tracked!");
